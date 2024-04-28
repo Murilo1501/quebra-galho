@@ -4,7 +4,7 @@
   "description": "API about quebra-galho app that is an app to freelancers",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon api/index.js",
+    "start": "nodemon api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Murilo1501/quebra-galho#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "mysql2": "^3.9.7",
     "nodemon": "^3.1.0",
