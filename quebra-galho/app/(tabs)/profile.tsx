@@ -1,10 +1,12 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView} from "react-native";
+import { useState } from "react";
 
 //Icons
 import Feather from '@expo/vector-icons/Feather';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 //Components
+import Editprofile from '../../components/Editprofile'
 function Card() {
     return(
         <View style={styles.card}>
@@ -14,6 +16,9 @@ function Card() {
 }
 
 export default function Profile(){
+    const [modalEdit, setModalEdit] = useState(false);
+
+
     return(  
         <View style={styles.container}>
             <View style={styles.header}>
@@ -42,8 +47,8 @@ export default function Profile(){
                             <Text style={styles.aboutText}>Sou um profissional que busca consertar ar condicionados muito bem :)</Text>
                         </View>
                         <View style={styles.profileButton}>
-                            <TouchableOpacity style={styles.button}>
-                                <Text style={styles.buttonText}>Conectar</Text>
+                            <TouchableOpacity style={styles.button} onPress={() => {setModalEdit(true)}}>
+                                <Text style={styles.buttonText}>Editar Perfil</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.button}>
                                 <Text style={styles.buttonText}>Compartilhar</Text>
@@ -79,6 +84,10 @@ export default function Profile(){
                     <Card/>
                 </View >
             </ScrollView>
+
+            {
+                (modalEdit && <Editprofile closeModal={() => {setModalEdit(false)}}/>)
+            }
         </View>
     )  
 }

@@ -10,8 +10,6 @@ import SubmitButton from "@/components/register/submitButton";
 
 
 export default function login(){
-
-    
     return(
         <View style={styles.container}>
            <Header/>
