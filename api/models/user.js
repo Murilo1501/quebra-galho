@@ -11,6 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+           // Um usuário pode ter muitos projetos
+           User.hasMany(models.Project, {
+            foreignKey: 'id_ownerProject',  // Chave estrangeira em Project
+            as: 'projects'  // Nome da associação
+          });
     }
   }
   User.init({
