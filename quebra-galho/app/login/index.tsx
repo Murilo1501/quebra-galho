@@ -1,4 +1,4 @@
-import { View,Text,TextInput } from "react-native";
+import { View,Text,TextInput, TouchableOpacity, Image} from "react-native";
 import styles from "./styles";
 import React from "react";
 import Input from "@/components/register/inputs";
@@ -12,33 +12,52 @@ import SubmitButton from "@/components/register/submitButton";
 export default function login(){
     return(
         <View style={styles.container}>
-           <Header/>
+           <View style={styles.header}>
+                <Text style={styles.headerText}>
+                    "Conecte-se com os melhores para cada necessidade."
+                </Text>
+           </View>
 
-            <View>
-                <Text style={styles.title}> Realizar Login</Text>
-                <Text style={styles.subTitle}>Insira seu email ou telefone para realizar o login</Text>
-
-                <View style={styles.inputs}>
-                    <View>
-                       <Input/>
+           <View style={styles.card}>
+                <Text style={styles.title}>Login</Text>
+                <View style={styles.fieldForm}>
+                    <View style={styles.fieldInput}>
+                        <Text style={styles.inputText}>e-mail ou telefone</Text>
+                        <TextInput style={styles.input} placeholder="Ex. (quebragalho@gmail.com)"/>
                     </View>
 
-                    <View>
-                      <Input/>
+                    <View style={styles.fieldInput}>
+                        <Text style={styles.inputText}>senha</Text>
+                        <TextInput style={styles.input} placeholder="Ex. (quebragalho123)"/>
                     </View>
-                    <Text style={styles.paragraph}>Nao tem uma conta ainda ? <Link href={"/register"}>Cadastre-se aqui</Link> </Text>
-
-                    <Division></Division>
-                    <AlternativeLogin></AlternativeLogin>
-
-                    <View style={styles.footer}>
-                        <Text style={styles.paragraphFooter}>Ao prosseguir, afirmo que estou de acordo com a Política de privacidade e os Termos de uso </Text>
-                        <SubmitButton/>
-                    </View>
-                  
-
                 </View>
-            </View>
+
+                <TouchableOpacity  style={styles.button}>
+                    <Text style={styles.buttonText}>Prosseguir</Text>
+                </TouchableOpacity>
+
+                <View style={styles.fieldOr}>
+                    <Text style={styles.orText}>ou</Text>
+                    <View style={styles.orLine}></View>
+                </View>
+
+                <View style={styles.alternativeLogin}>
+                    <TouchableOpacity style={styles.fieldAlternative}>
+                        <Image style={styles.iconGoogle} source={require("../../assets/images/google.webp")} />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.fieldAlternative}>
+                        <Image style={styles.iconFacebook} source={require("../../assets/images/facebook.png")} />
+                    </TouchableOpacity>
+                </View>
+
+                <Text style={styles.proceed}>
+                    Ao prosseguir, afirmo que estou de acordo com a <Text style={styles.proceedSpan}>Politica de privacidade</Text> e os <Text style={styles.proceedSpan}>Termos de uso</Text>
+                </Text>
+
+                <Text style={styles.noAccount}> Não possui conta? <Link href='register' style={styles.noAccountSpan}>Crie agora!</Link>
+                </Text>
+           </View>  
         </View>
     )
 
