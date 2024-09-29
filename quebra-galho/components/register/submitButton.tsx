@@ -2,29 +2,29 @@ import { View,Text,TouchableOpacity,StyleSheet } from "react-native";
 
 export default function SubmitButton(){
     return(
-        <TouchableOpacity style={styles.submit}>
-           <Text style={styles.submitText}>Prosseguir</Text>
+        <TouchableOpacity  style={styles.button}>
+            <Text style={styles.buttonText}>Prosseguir</Text>
         </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
-    submit:{
-        marginTop:50,
-        backgroundColor:"#00AAFF",
-        width:300,
-        borderRadius:30,
-        padding:20,
-        alignItems:"center",
-        marginLeft:40
-        
+    button: {
+        backgroundColor: '#00AAFF',
+        maxWidth: 250,
+        width: '95%',
+        height: 55,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 
-    submitText:{
-        textAlign:"center",
-        color:"#ffff",
-        fontWeight:"bold"
-    }
+    buttonText: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+        textTransform: 'uppercase'
+    },
 
 
 })

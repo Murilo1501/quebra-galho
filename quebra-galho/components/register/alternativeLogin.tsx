@@ -1,56 +1,48 @@
-import { View,Text,StyleSheet,Image } from "react-native";
+import { View,TouchableOpacity,StyleSheet,Image } from "react-native";
 
 export default function AlternativeLogin(){
     return(
-        <View style={styles.container}>
-            <View style={styles.login}>
-                <Image
-                    source={require('./../../assets/images/facebook.png')}
-                    style={styles.logo}
-                />
-                <Text style={styles.loginText}>Facebook</Text>
-               
-            </View>
-            <View style={styles.login}>
-                <Image
-                    source={require('./../../assets/images/google.webp')}
-                    style={styles.logo}
-                />
-                <Text style={styles.loginText}>Google</Text>
-            </View>
-        </View>
+        <View style={styles.alternativeLogin}>
+                    <TouchableOpacity style={styles.fieldAlternative}>
+                        <Image style={styles.iconGoogle} source={require("../../assets/images/google.webp")} />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.fieldAlternative}>
+                        <Image style={styles.iconFacebook} source={require("../../assets/images/facebook.png")} />
+                    </TouchableOpacity>
+                </View>
     )
     
 }
 
 const styles = StyleSheet.create({
-    container:{
-        display:"flex",
-        flexDirection:"row",
-        gap:20,
-        justifyContent:"center"
+    alternativeLogin: {
+        flexDirection: 'row',
+        paddingVertical: 5,
+        width: '95%',
+        height: 'auto',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 25
     },
 
-    login:{
-        width:150,
-        height:50,
-        borderRadius:30,
-        borderWidth:1,
-        borderColor:"#005D85",
-       display:"flex",
-       flexDirection:"row",
-       alignItems:"center",
-       justifyContent:"center",
-       gap:20
+    fieldAlternative: {
+        width: 65,
+        height: 65,
+        borderRadius: 70,
+        borderColor: '#00AAFF',
+        borderWidth: 2,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
 
-    loginText:{
-        textAlign:"center",
-
+    iconGoogle: {
+        width: 45,
+        height: 45
     },
 
-    logo:{
-        width:40,
-        height:40,
-    }
+    iconFacebook: {
+        width:35,
+        height:35
+    },
 })

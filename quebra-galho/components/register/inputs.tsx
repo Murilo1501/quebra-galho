@@ -1,30 +1,44 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, TextInput} from 'react-native';
+import {SafeAreaView, StyleSheet, TextInput, View, Text, Platform} from 'react-native';
 
-const Input = () => {
-  const [text, onChangeText] = React.useState('Useless Text');
+type fieldInput = {
+  placeHolder: string,
+  label: string
+}
 
-
+const Input = (props: fieldInput) => {
+  const [text, onChangeText] = React.useState('');
+    
   return (
-
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-      />
+    <View style={styles.fieldInput}>
+        <Text style={styles.inputText}>{props.label}</Text>
+        <TextInput style={styles.input} onChangeText={onChangeText} value={text}  placeholder={props.placeHolder}/>
+    </View>
      
   );
 };
 
 const styles = StyleSheet.create({
-  input: {
-    height: 55,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius:10,
-    borderColor:"#005D85"
-  },
+  fieldInput: {
+    width: '100%',
+    gap:5
+},
+
+inputText: {
+    fontSize: 13,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    color: '#00AAFF',
+    paddingLeft: 5
+},
+
+input: {
+    width: '100%',
+    height: 46,
+    borderBottomColor: '#00AAFF',
+    borderBottomWidth: 2,
+    paddingHorizontal: 5
+},
 });
 
 export default Input;

@@ -1,34 +1,42 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-const Header = () => {
+type header = {
+  title: string
+}
+
+const Header = (props: header) => {
   return (
     <View style={styles.header}>
-      <Image
-        source={require('./../../assets/images/logo.png')}
-        // Altere para o caminho da sua logo
-        style={styles.logo}
-      />
+        <Text style={styles.headerText}>
+          {props.title}
+        </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   header: {
-    flexDirection: 'row',
+    position: 'absolute',
+    top:0,
+    backgroundColor: '#00AAFF',
+    width: '100%',
+    height: 190,
+    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: 25,
+    justifyContent: 'center',
     alignItems: 'center',
-    height:80,
-    backgroundColor: '#ffff',
-    borderBottomColor: '#ddd',
   },
-  logo: {
-    width: 100,
-    height: 100,
-    marginLeft:"35%"
-  },
-  title: {
-    fontSize: 20,
+
+  headerText: {
+    color: '#fff',
+    fontSize: 18,
     fontWeight: 'bold',
+    lineHeight: 25,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    width:'95%',
+
   },
 });
 

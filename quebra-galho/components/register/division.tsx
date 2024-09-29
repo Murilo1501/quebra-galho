@@ -3,31 +3,41 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const Division = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.line} />
-      <Text style={styles.text}>ou</Text>
-      <View style={styles.line} />
+    <View style={styles.fieldOr}>
+        <Text style={styles.orText}>ou</Text>
+        <View style={styles.orLine}></View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
+  fieldOr: {
+    width: '90%',
+    height: 30,
     alignItems: 'center',
-    marginVertical: 20,
-    width: '90%', // Define a largura máxima do container
-    alignSelf: 'center', // Centraliza o container na tela
+    justifyContent: 'center',
   },
-  line: {
-    flex: 1,
-    height: 1,
-    backgroundColor: 'black',
-  },
-  text: {
-    marginHorizontal: 10,
+
+  orText: {
     fontSize: 16,
-  },
+    fontWeight: 'medium',
+    position: 'absolute',
+    alignSelf: 'center',
+    top: 0,
+    zIndex: 10,
+    color: '#00AAFF',
+    backgroundColor: '#fff',
+    height: 30,
+    width: 38,
+    textAlign: 'center',
+    borderRadius: 5
+},
+
+orLine: {
+    width: '100%',
+    height: 3,
+    backgroundColor: '#00AAFF'
+},
 });
 
 export default Division;
