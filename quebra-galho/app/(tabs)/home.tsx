@@ -1,8 +1,9 @@
-import { View,SafeAreaView,Text,StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native";
+import Entypo from '@expo/vector-icons/Entypo';
 import Carousel from "@/components/carousel";
 import { ScrollView } from "react-native-gesture-handler";
-import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeCard from "@/components/home/homeCard";
+import ServicesCard from "@/components/home/servicesCard";
 
 
 
@@ -16,152 +17,202 @@ export default function Home(){
   ]
 
   return(
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <View>
-          <Text style={styles.title}>Encontre</Text>
-          <Text style={styles.subTitle}>Seu profissional</Text>
-        </View>
-
-        <View>
-          <Text></Text>
-        </View>
-      </View>
-
-      <View style={styles.searchbar}>
-       <TextInput placeholder="Digite algo..."  placeholderTextColor="#888888"/>
-      </View>
-
-      <ScrollView>
-        <View style={styles.carousel}>
-          <Carousel data={data}/>
-        </View>
-
-         {/*main */}
-    
-         <View >
-            <View style={styles.main}>
-              <Text style={styles.textProject}>Top Projetos</Text>
-              <TouchableOpacity style={styles.exploreButton}>
-                <Text style={styles.textExplore}>Explore</Text>
-                <Icon name="long-arrow-right" size={24} color="#00AAFF"/>
+      <ScrollView style={styles.containerScroll}>
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>Encontre seu profissional</Text>
+            <View style={styles.searchField}>
+              <TextInput placeholder="Ex: Diarista" style={styles.inputSearch}/>
+              <TouchableOpacity style={styles.buttonSearch}>
+                <Entypo name="magnifying-glass" style={styles.iconButtonSearch}/>
               </TouchableOpacity>
             </View>
+          </View>
 
-            <View style={styles.projects}>
-                <HomeCard id={"1"} img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX1xGktqkilBOCZ5vPjZTqe5GIgZB_q2QDlw&s"} title="engenharia, projeto de engenheiro civil"  />
-                <HomeCard id={"2"} img={"https://www.fabricadejogos.net/wp-content/uploads/2016/10/work-731198_640.jpg"} title="programador,software em react native"  />
-                <HomeCard id={"1"} img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX1xGktqkilBOCZ5vPjZTqe5GIgZB_q2QDlw&s"} title="engenharia, projeto de engenheiro civil"  />
-                <HomeCard id={"2"} img={"https://www.fabricadejogos.net/wp-content/uploads/2016/10/work-731198_640.jpg"} title="programador,software em react native"  />
-
-             
-              
+          <View style={styles.main}>
+            <View style={styles.categories}>
+                <HomeCard title="Diarista" image={require("../../assets/images/card-diarista.png")}/>
+                <HomeCard title="Manutenção de ar condicionado" image={require('../../assets/images/card-arcondicionado.png')}/>
+                <HomeCard title="Manutenção de computadores" image={require('../../assets/images/card-computador.png')} />
+                <HomeCard title="Passeador de  animais" image={require('../../assets/images/card-passeador.png')}/>
+            
+                <TouchableOpacity style={styles.card}>
+                  <Text style={styles.cardTitle}>Quero trabalhar</Text>
+                  <Text style={styles.cardText}>Você é um profissional buscando novas oportunidades? Temos a solução perfeita para você!</Text>
+                  <View style={styles.cardBackground}></View>
+                  <Image source={require('../../assets/images/card-trabalho.png')} style={styles.cardImage}/>
+                </TouchableOpacity>
             </View>
+
+            <View style={styles.services}>
+              <Text style={styles.servicesTitle}>Serviços populares</Text>
+              <ScrollView style={styles.servicesScroll} horizontal showsHorizontalScrollIndicator={false}>  
+                  <ServicesCard text="Manutenção e reparo de computadores: conserto de hardware/software para desempenho ideal." image={require("../../assets/images/services-computador.png")}/>
+                  <ServicesCard text="Serviços de limpeza residencial: limpeza geral, organização para manter sua casa impecável." image={require("../../assets/images/services-limpeza.png")}/>
+              </ScrollView>
+            </View>
+          </View>
         </View>
       </ScrollView>
-
-
-     
-
-    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
+  containerScroll:{
+    backgroundColor: '#fff',
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    marginTop: 32
+  },
+
   container:{
-    flex:1,
+    backgroundColor: '#fff',
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    paddingBottom: 15,
+    gap: 15
   },
 
   header:{
-    display:"flex",
-    flexDirection:"row",
-    alignItems:"center",
-    justifyContent:"space-between",
-    paddingLeft: 32,
-    paddingRight: 32
-
+    backgroundColor:'#00AAFF',
+    width: '100%',
+    height: 160,
+    paddingTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10
   },
 
-  title:{
-    fontSize:40,
-    color:"#00AAFF",
-    fontWeight:"bold"
+  headerTitle:{
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#fff',
+    width: '90%'
   },
 
-  subTitle:{
-    color:"#c3c3c3",
-    fontSize:32
+  searchField: {
+    position: 'relative',
+    backgroundColor: '#fff',
+    width: '90%',
+    height: 60,
+    borderRadius: 5,
+    overflow: 'hidden'
   },
 
-  searchbar:{
-    display:"flex",
-    flexDirection:"row",
-    alignItems:"center",
-    backgroundColor:"#fff",
-    height:55,
-    marginTop: 16,        // Correspondente ao mt-4
-    marginLeft: 16,       // Correspondente ao mx-4
-    marginRight: 16,      // Correspondente ao mx-4
-    borderRadius: 12,     // Correspondente ao rounded-xl
-    paddingTop: 4,        // Correspondente ao py-1
-    paddingBottom: 4,     // Correspondente ao py-1
-    paddingLeft: 16,      // Correspondente ao px-4
-    paddingRight: 16,     // Correspondente ao px-4
-    shadowColor: '#000',  // Parte da sombra
-    shadowOffset: { width: 0, height: 10 }, // Parte da sombra
-    shadowOpacity: 0.1,   // Parte da sombra
-    shadowRadius: 15,     // Parte da sombra
-    elevation: 6,      
-  }, 
-
-  carousel:{
-    display:"flex",
-    flexDirection:"row",
-    alignItems:"center",
-    marginTop: 16,        // Correspondente ao mt-4
-    marginLeft: 16,       // Correspondente ao mx-4
-    marginRight: 16,      // Correspondente ao mx-4
-    borderRadius: 12,     // Correspondente ao rounded-xl
-
+  inputSearch: {
+    backgroundColor: '#fff',
+    width: '80%',
+    height: '100%',
+    paddingLeft: 15
   },
 
-  main:{
-    display:"flex",
-    flexDirection:"row",
-    alignItems:"center",
-    justifyContent:"space-between",
-    paddingHorizontal: 16, // px-4
-    marginTop: 8, 
+  buttonSearch: {
+    backgroundColor: '#fff',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    height: '100%',
+    width: 60,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
-  exploreButton:{
-    display:"flex",
-    flexDirection:"row",
-    alignItems:"center",
-    justifyContent:"center",
-    marginRight: 4,
-    gap:8
+  iconButtonSearch: {
+    fontSize: 32,
+    color: '#00AAFF'
   },
 
-  textProject:{
-    color:"#00AAFF",
-    fontSize:28,
-    fontWeight:"bold"
+  main: {
+    width: '100%',
+    alignItems: 'center',
+    gap: 10
   },
 
-  textExplore:{
-    color:"#C3C3C3",
-    fontSize:20,
-    fontWeight:"bold"
+  categories: {
+    width: '95%',
+    height: 'auto',
+    paddingHorizontal: 5,
+    paddingVertical: 5,
+    backgroundColor: '#F6F6F6',
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10
   },
 
-  projects:{
-    flexDirection: 'row',      // Organiza os elementos em linha
-    flexWrap: 'wrap',          // Permite que os elementos quebrem para a próxima linha
-    marginTop: 10,             // Espaçamento superior
-    justifyContent: 'center', 
-    gap:20
+  card: {
+    position: 'relative',
+    width: '98%',
+    height: 114,
+    borderRadius:5,
+    overflow: 'hidden',
+    alignItems: 'center',
+    gap: 6
+    
+},
+
+  cardTitle: {
+      width: '95%',
+      height: 'auto',
+      paddingTop: 10 ,
+      fontSize: 16,
+      color: "#fff",
+      fontWeight: 'bold',
+      lineHeight: 20
+  },
+
+  cardText: {
+    color: '#fff',
+    width: '95%',
+    fontSize: 13,
+    fontWeight: '600'
+  },
+
+  cardBackground: {
+      position:'absolute',
+      top: 0,
+      left: 0,
+      zIndex: -1,
+      width: '100%',
+      height: '100%',
+      backgroundColor: '#60606099',
+  },
+
+  cardImage: {
+      position:'absolute',
+      top: 0,
+      left: 0,
+      zIndex: -2,
+      width: '100%',
+      height: '100%'
+  },
+
+  services: {
+    width: '100%',
+    height: 'auto',
+    paddingVertical: 10,
+    alignItems: 'center',
+    gap: 10
+  },
+
+  servicesTitle: {
+    width: '93%',
+    fontSize: 17,
+    fontWeight: '700',
+    color: '#00AAFF'
+  },
+
+  servicesScroll: {
+    width: '100%',
+    height: 'auto',
+
   }
-
 
 })

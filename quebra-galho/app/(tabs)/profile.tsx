@@ -94,6 +94,7 @@ export default function Profile(){
 
 const styles = StyleSheet.create({
     container:{
+        backgroundColor: '#fff',
         flex:1,
         marginTop: 34,
         alignItems: 'center',
@@ -179,7 +180,7 @@ const styles = StyleSheet.create({
     },
 
     profileAbout: {
-        backgroundColor: '#FBFBFB',
+        backgroundColor: '#F6F6F6',
         width: '90%',
         height: 'auto',
         padding: 15,

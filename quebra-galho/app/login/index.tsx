@@ -26,7 +26,7 @@ export default function login(){
                 <Text style={styles.proceed}>
                     Ao prosseguir, afirmo que estou de acordo com a <Text style={styles.proceedSpan}>Politica de privacidade</Text> e os <Text style={styles.proceedSpan}>Termos de uso</Text>
                 </Text>
-                <Text style={styles.noAccount}> Não possui conta? <Link href='register' style={styles.noAccountSpan}>Crie agora!</Link>
+                <Text style={styles.noAccount}> Não possui conta? <Link href='home' style={styles.noAccountSpan}>Crie agora!</Link>
                 </Text>
            </View>  
         </ScrollView>
